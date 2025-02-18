@@ -24,7 +24,7 @@ export default {
         }
       },
       animation:{
-        fromTop:"fromTop 0.3s linear"
+        fromTop:"fromTop 0.2s linear"
       }
     },
   },

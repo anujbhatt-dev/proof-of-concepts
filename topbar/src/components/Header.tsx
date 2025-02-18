@@ -55,7 +55,7 @@ const Header = () => {
     categoryHover &&
     <div  
     onMouseLeave={handleMouseLeave}
-    className="animate-fromTop bg-slate-200 shadow-sm absolute top-[4rem] w-full font-sans">
+    className="animate-fromTop bg-slate-200 shadow-lg fixed top-[4rem] w-full font-sans border-b border-black/30">
             <div className="min-h-[65vh] grid grid-cols-6">
                  <aside className="  bg-slate-300 text-black pt-12 border-r border-black/10">
                      {subcategories.map((item)=>(
@@ -63,7 +63,7 @@ const Header = () => {
                      ))}
                  </aside>
                  {!selectedSubcategory?
-                 <div className="p-8 col-span-5 bg-zinc-200 ">
+                 <div className="p-8 col-span-5 bg-zinc-100 ">
                         {selectedSubcategory?selectedSubcategory:
                             <div>
                                 <div className="text-[1rem] border-b border-purple-500/10 pb-2 font-bold">{selectedCategory}</div>
@@ -73,10 +73,10 @@ const Header = () => {
                                             alt="" 
                                             fill
                                             className="object-cover" 
-                                            src={`/i${selectedCategory}.jpg`} 
+                                            src={`/${selectedCategory}1.webp`} 
                                         />
-                                        <div className="absolute bottom-2 left-2 text-[4rem] text-white font-bold font-serif">
-                                            <h3 className="">T-Shirts</h3>
+                                        <div className="absolute bottom-0 left-0 pb-2 pl-2 text-[3.5rem] bg-gradient-to-t from-zinc-200 via-zinc-200/50 to-transparent  text-white font-bold font-serif w-full">
+                                            <h3 className="">Sweaters</h3>
                                         </div>
                                     </div>
                                     <div className="relative h-[50vh] w-auto"> {/* Ensure relative positioning and defined height */}
@@ -84,20 +84,9 @@ const Header = () => {
                                             alt="" 
                                             fill
                                             className="object-cover" 
-                                            src={`/i${selectedCategory}.jpg`} 
+                                            src={`/${selectedCategory}2.webp`} 
                                         />
-                                        <div className="absolute bottom-2 left-2 text-[4rem] text-white font-bold font-serif">
-                                            <h3 className="">Trousers</h3>
-                                        </div>
-                                    </div>
-                                    <div className="relative h-[50vh] w-auto"> {/* Ensure relative positioning and defined height */}
-                                        <Image 
-                                            alt="" 
-                                            fill
-                                            className="object-cover" 
-                                            src={`/i${selectedCategory}.jpg`} 
-                                        />
-                                        <div className="absolute bottom-2 left-2 text-[4rem] text-white font-bold font-serif">
+                                        <div className="absolute bottom-0 left-0 pb-2 pl-2 text-[3.5rem] bg-gradient-to-t from-zinc-200 via-zinc-200/50 to-transparent  text-white font-bold font-serif w-full">
                                             <h3 className="">Pants</h3>
                                         </div>
                                     </div>
@@ -106,10 +95,21 @@ const Header = () => {
                                             alt="" 
                                             fill
                                             className="object-cover" 
-                                            src={`/i${selectedCategory}.jpg`} 
+                                            src={`/${selectedCategory}3.webp`} 
                                         />
-                                        <div className="absolute bottom-2 left-2 text-[4rem] text-white font-bold font-serif">
-                                            <h3 className="">Old Money</h3>
+                                        <div className="absolute bottom-0 left-0 pb-2 pl-2 text-[3.5rem] bg-gradient-to-t from-zinc-200 via-zinc-200/50 to-transparent  text-white font-bold font-serif w-full">
+                                            <h3 className="">Shorts</h3>
+                                        </div>
+                                    </div>
+                                    <div className="relative h-[50vh] w-auto"> {/* Ensure relative positioning and defined height */}
+                                        <Image 
+                                            alt="" 
+                                            fill
+                                            className="object-cover" 
+                                            src={`/${selectedCategory}4.webp`} 
+                                        />
+                                        <div className="absolute bottom-0 left-0 pb-2 pl-2 text-[3.5rem] bg-gradient-to-t from-zinc-200 via-zinc-200/50 to-transparent  text-white font-bold font-serif w-full">
+                                            <h3 className="">Shirts</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -132,28 +132,28 @@ const Header = () => {
                                 width={250}
                                 height={400}
                                 className="rounded-lg w-auto h-full overflow-hidden flex-shrink-0"
-                                src={"/i1.jpg"}
+                                src={"/i1.webp"}
                             />
                             <Image 
                                 alt="" 
                                 width={250}
                                 height={400}
                                 className="rounded-lg w-auto h-full overflow-hidden flex-shrink-0"
-                                src={"/i1.jpg"}
+                                src={"/i1.webp"}
                             />
                             <Image 
                                 alt="" 
                                 width={250}
                                 height={400}
                                 className="rounded-lg w-auto h-full overflow-hidden flex-shrink-0"
-                                src={"/i1.jpg"}
+                                src={"/i1.webp"}
                             />
                             <Image 
                                 alt="" 
                                 width={250}
                                 height={400}
                                 className="rounded-lg w-auto h-full overflow-hidden flex-shrink-0"
-                                src={"/i1.jpg"}
+                                src={"/i1.webp"}
                             />
                         </div>
                         
