@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.className} ${merriwether.variable} antialiased bg-slate-100 tracking-wider`}
+        className={`${playfairDisplay.className} ${merriwether.variable} antialiased  overflow-x-hidden tracking-wider`}
       >
         {children}
       </body>
