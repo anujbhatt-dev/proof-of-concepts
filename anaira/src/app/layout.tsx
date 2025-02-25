@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Merriweather } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 // Import Playfair Display (Serif) for headings
 const playfairDisplay = Playfair_Display({
@@ -30,6 +31,9 @@ export default function RootLayout({
       <body
         className={`${playfairDisplay.className} ${merriwether.variable} antialiased  overflow-x-hidden tracking-wider`}
       >
+        <div className="hidden md:flex">
+        <CustomCursor/>
+        </div>
         {children}
       </body>
     </html>

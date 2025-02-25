@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useCursorStore } from "@/store/useCursorStore";
 
 const mediaArray = [
   {
@@ -9,8 +10,8 @@ const mediaArray = [
     title: "The Legacy of Elegance",
     subtitle: "Timeless Fashion for the Elite",
     cta: "Shop the Collection",
-    position: "top-left",
-    fontSize: "lg",
+    position: "bottom-left",
+    fontSize: "3xl",
   },
   {
     type: "image",
@@ -19,7 +20,7 @@ const mediaArray = [
     subtitle: "Crafted for the Modern Aristocrat",
     cta: "Explore Now",
     position: "bottom-right",
-    fontSize: "xl",
+    fontSize: "3xl",
   },
   {
     type: "image",
@@ -27,8 +28,8 @@ const mediaArray = [
     title: "Eternal Style",
     subtitle: "Luxury that Never Fades",
     cta: "Discover More",
-    position: "center-left",
-    fontSize: "2xl",
+    position: "bottom-left",
+    fontSize: "3xl",
   },
   {
     type: "image",
@@ -36,7 +37,7 @@ const mediaArray = [
     title: "Bespoke Heritage",
     subtitle: "Tailored for the Privileged Few",
     cta: "Browse Collection",
-    position: "top-right",
+    position: "bottom-right",
     fontSize: "3xl",
   },
   {
@@ -46,7 +47,7 @@ const mediaArray = [
     subtitle: "Where Tradition Meets Luxury",
     cta: "Shop Now",
     position: "bottom-left",
-    fontSize: "4xl",
+    fontSize: "3xl",
   },
 ];
 
@@ -69,22 +70,40 @@ const fontSizeClasses: { [key: string]: string } = {
 
 const FullScreenMedia: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const { scaleUp, scaleDown} = useCursorStore()
+  
+  const handleCursorEnter = ()=>{
+      if(isPaused)
+      scaleUp("Play slide")
+      else
+      scaleUp("Pause Slide")
+  }
+
+  const handleCursorLeave = ()=>{
+    scaleDown()
+  }
 
   useEffect(() => {
+    if (isPaused) return;
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % mediaArray.length);
     }, 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isPaused]);
+
+  const togglePause = () => setIsPaused((prev) => !prev);
 
   const currentMedia = mediaArray[currentIndex];
 
   return (
-    <div className="w-full h-[calc(100vh)] relative overflow-hidden flex items-center justify-center">
+    <div
+    
+    className="w-full h-[calc(100vh)] relative overflow-hidden flex items-center justify-center">
       {/* Background Media */}
       <motion.div
         className="absolute top-0 left-0 w-full h-full"
-        key={`${currentIndex}-media`} // Unique key for media
+        key={`${currentIndex}-media`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -107,10 +126,10 @@ const FullScreenMedia: React.FC = () => {
         )}
       </motion.div>
 
-      {/* Overlay Text with Dynamic Positioning and Animation Reset */}
+      {/* Overlay Text */}
       <motion.div
-        key={`${currentIndex}-text`} // Unique key for text
-        className={`absolute ${positionClasses[currentMedia.position]} text-white bg-black bg-opacity-40 backdrop-blur-sm px-6 py-4 `}
+        key={`${currentIndex}-text`}
+        className={`absolute ${positionClasses[currentMedia.position]} text-white bg-opacity-40 backdrop-blur-sm px-6 py-4`}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -30 }}
@@ -135,7 +154,7 @@ const FullScreenMedia: React.FC = () => {
           {currentMedia.subtitle}
         </motion.p>
         <motion.button
-          className="bg-white text-black font-semibold px-5 py-2  shadow-md hover:bg-gray-300 transition-all"
+          className="bg-white text-black font-semibold px-5 py-2 shadow-md hover:bg-gray-300 transition-all"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -146,18 +165,25 @@ const FullScreenMedia: React.FC = () => {
       </motion.div>
 
       {/* Centered Progress Bar */}
-      {/* Centered Progress Bar */}
-      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 w-1/2 h-1 bg-gray-300/30  overflow-hidden">
+      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 w-1/2 h-1 bg-gray-300/30 overflow-hidden">
         <motion.div
-          key={`${currentIndex}-progress`} // Unique key for progress bar
-          className="h-full bg-white  w-full"
-          initial={{ translateX: "-100%" }} // Start from the far left
-          animate={{ translateX: "0%" }} // Move to full width
-          exit={{ translateX: "-100%" }} // Reset when media changes
-          transition={{ duration: 10, ease: "linear" }}
+          key={`${currentIndex}-progress`}
+          className="h-full bg-white w-full"
+          initial={{ translateX: "-100%" }}
+          animate={isPaused ? { translateX: "-100%" } : { translateX: "0%" }}
+          transition={{ duration: isPaused ? 0 : 10, ease: "linear" }}
         />
       </div>
 
+      {/* Stop/Play Button */}
+      <button
+        onClick={togglePause}
+        onMouseEnter={handleCursorEnter}
+        onMouseLeave={handleCursorLeave}
+        className="absolute left-50 bottom-50 bg-black bg-opacity-30 text-white p-3 rounded-full hover:bg-opacity-75 transition-all z-10 h-[6rem] w-[4rem]"
+      >
+        {isPaused ? "▶" : "⏸"}
+      </button>
     </div>
   );
 };
