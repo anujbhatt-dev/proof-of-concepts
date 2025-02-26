@@ -25,50 +25,50 @@ function PinnedCards() {
   });
 
   return (
-    <main className='w-full flex flex-col gap-y-[4rem] items-center pt-[15vh] text-white text-center pb-[10rem] bg-black'>
+    <main className='w-full flex flex-col gap-y-[10rem] items-center pt-[15vh] text-white pb-[10rem] bg-black px-[10rem]'>
       <div> 
             <div className='w-[80vw]'>
-              <AnimateHeading text="Best Seller"/>
+              <AnimateHeading text="Best  Seller"/>
             </div>
             <p className="text-lg text-white mb-8 max-w-xl mx-auto text-left">
             Discover timeless pieces crafted with elegance and sophistication. 
             Elevate your wardrobe with our latest collection, designed for the discerning.
             </p>
       </div>  
-      <div className='card sticky top-[15vh] flex flex-col gap-4 items-center bg-[#2e251e] md:w-[40vw] px-[20px] py-[15vh]'>
-        <img src="/1.png" alt="Classic Tailoring" className='w-[180px] aspect-square' />
-        <h1 className='text-4xl font-thin'>The <br /> <span className='font-bold'>Heritage Suit</span></h1>
-        <p>Timeless craftsmanship meets modern refinement—our signature tailored suit.</p>
+      <div className='card sticky top-[10vh] md:w-[60vw] md:h-[70vh] px-[20px] py-[15vh] overflow-hidden self-start' >        
+        <img src="/1.jpeg" alt="Classic Tailoring" className='h-auto w-full -z-10 absolute top-0 left-0 object-cover' />
+        <div className="absolute bottom-0 left-0 p-6 bg-black/40 backdrop-blur-sm text-white w-full">
+            <h3 className="text-4xl font-semibold">Silk Blouse</h3>
+            <p className="text-xl text-zinc-100 font-sans">Luxurious silk</p>
+            <p className="mt-2 text-lg font-bold font-sans"><span className=' text-4xl'>₹1234</span> <span className='line-through opacity-50'> ₹2468</span></p>
+        </div>
       </div>
 
-      <div className='card sticky top-[15vh] flex flex-col gap-4 items-center bg-[#2e251e] md:w-[40vw] px-[20px] py-[15vh]'>
-        <img src="/2.png" alt="Luxury Knitwear" className='w-[180px] aspect-square' />
-        <h1 className='text-4xl font-thin'>The <br /> <span className='font-bold'>Cashmere Classic</span></h1>
-        <p>Soft, understated, and effortlessly elegant—crafted from the finest cashmere.</p>
+      <div className='card sticky top-[10vh] md:w-[60vw] md:h-[70vh] px-[20px] py-[15vh] overflow-hidden self-end' >        
+        <img src="/2.jpg" alt="Classic Tailoring" className='h-auto w-full -z-10 absolute top-0 left-0 object-cover' />
+        <div className="absolute bottom-0 left-0 p-6 bg-black/40 backdrop-blur-sm text-white w-full">
+            <h3 className="text-4xl font-semibold">Silk Blouse</h3>
+            <p className="text-xl text-zinc-100 font-sans">Luxurious silk</p>
+            <p className="mt-2 text-lg font-bold font-sans"><span className=' text-4xl'>₹1234</span> <span className='line-through opacity-50'> ₹2468</span></p>
+        </div>
       </div>
 
-      <div className='card sticky top-[15vh] flex flex-col gap-4 items-center bg-[#2e251e] md:w-[40vw] px-[20px] py-[15vh]'>
-        <img src="/3.png" alt="Tailored Trousers" className='w-[180px] aspect-square' />
-        <h1 className='text-4xl font-thin'>The <br /> <span className='font-bold'>Oxford Trousers</span></h1>
-        <p>Perfectly cut for a sharp silhouette—classic, refined, and essential.</p>
+      <div className='card sticky top-[10vh] md:w-[60vw] md:h-[70vh] px-[20px] py-[15vh] overflow-hidden self-start' >        
+        <img src="/3.jpg" alt="Classic Tailoring" className='h-auto w-full -z-10 absolute top-0 left-0 object-cover' />
+        <div className="absolute bottom-0 left-0 p-6 bg-black/40 backdrop-blur-sm text-white w-full">
+            <h3 className="text-4xl font-semibold">Silk Blouse</h3>
+            <p className="text-xl text-zinc-100 font-sans">Luxurious silk</p>
+            <p className="mt-2 text-lg font-bold font-sans"><span className=' text-4xl'>₹1234</span> <span className='line-through opacity-50'> ₹2468</span></p>
+        </div>
       </div>
 
-      <div className='card sticky top-[15vh] flex flex-col gap-4 items-center bg-[#2e251e] md:w-[40vw] px-[20px] py-[15vh]'>
-        <img src="/4.png" alt="Luxury Accessories" className='w-[180px] aspect-square' />
-        <h1 className='text-4xl font-thin'>The <br /> <span className='font-bold'>Silk Ascot</span></h1>
-        <p>Luxury in the details—our pure silk ascots elevate any ensemble.</p>
-      </div>
-
-      <div className='card sticky top-[15vh] flex flex-col gap-4 items-center bg-[#2e251e] md:w-[40vw] px-[20px] py-[15vh] rounded-lg'>
-        <img src="/5.png" alt="Heritage Footwear" className='w-[180px] aspect-square' />
-        <h1 className='text-4xl font-thin'>The <br /> <span className='font-bold'>Oxford Brogues</span></h1>
-        <p>Handcrafted with precision—shoes that stand the test of time.</p>
-      </div>
-
-      <div className='card sticky top-[15vh] flex flex-col gap-4 items-center bg-[#2e251e] md:w-[40vw] px-[20px] py-[15vh] rounded-lg'>
-        <img src="/6.png" alt="Timeless Overcoat" className='w-[180px] aspect-square' />
-        <h1 className='text-4xl font-thin'>The <br /> <span className='font-bold'>Mayfair Overcoat</span></h1>
-        <p>Elegance in motion—our classic wool overcoat, a symbol of sophistication.</p>
+      <div className='card sticky top-[10vh] md:w-[60vw] md:h-[70vh] px-[20px] py-[15vh] overflow-hidden self-end' >        
+        <img src="/4.jpg" alt="Classic Tailoring" className='h-auto w-full -z-10 absolute top-0 left-0 object-cover' />
+        <div className="absolute bottom-0 left-0 p-6 bg-black/40 backdrop-blur-sm text-white w-full">
+            <h3 className="text-4xl font-semibold">Silk Blouse</h3>
+            <p className="text-xl text-zinc-100 font-sans">Luxurious silk</p>
+            <p className="mt-2 text-lg font-bold font-sans"><span className=' text-4xl'>₹1234</span> <span className='line-through opacity-50'> ₹2468</span></p>
+        </div>
       </div>
     </main>
   )

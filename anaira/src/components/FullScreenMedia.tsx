@@ -10,7 +10,7 @@ const mediaArray = [
     title: "The Legacy of Elegance",
     subtitle: "Timeless Fashion for the Elite",
     cta: "Shop the Collection",
-    position: "bottom-left",
+    position: "center-center",
     fontSize: "3xl",
   },
   {
@@ -19,7 +19,7 @@ const mediaArray = [
     title: "Refined Sophistication",
     subtitle: "Crafted for the Modern Aristocrat",
     cta: "Explore Now",
-    position: "bottom-right",
+    position: "center-center",
     fontSize: "3xl",
   },
   {
@@ -28,7 +28,7 @@ const mediaArray = [
     title: "Eternal Style",
     subtitle: "Luxury that Never Fades",
     cta: "Discover More",
-    position: "bottom-left",
+    position: "center-center",
     fontSize: "3xl",
   },
   {
@@ -37,7 +37,7 @@ const mediaArray = [
     title: "Bespoke Heritage",
     subtitle: "Tailored for the Privileged Few",
     cta: "Browse Collection",
-    position: "bottom-right",
+    position: "center-center",
     fontSize: "3xl",
   },
   {
@@ -46,7 +46,7 @@ const mediaArray = [
     title: "The Art of Dressing Well",
     subtitle: "Where Tradition Meets Luxury",
     cta: "Shop Now",
-    position: "bottom-left",
+    position: "center-center",
     fontSize: "3xl",
   },
 ];
@@ -92,14 +92,16 @@ const FullScreenMedia: React.FC = () => {
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  const togglePause = () => setIsPaused((prev) => !prev);
+  const togglePause = () => {
+    setIsPaused((prev) => !prev)
+  }
 
   const currentMedia = mediaArray[currentIndex];
 
   return (
     <div
     
-    className="w-full h-[calc(100vh)] relative overflow-hidden flex items-center justify-center">
+    className="w-full h-[calc(100vh)] relative overflow-hidden flex items-center justify-center text-center">
       {/* Background Media */}
       <motion.div
         className="absolute top-0 left-0 w-full h-full"
@@ -129,7 +131,7 @@ const FullScreenMedia: React.FC = () => {
       {/* Overlay Text */}
       <motion.div
         key={`${currentIndex}-text`}
-        className={`absolute ${positionClasses[currentMedia.position]} text-white bg-opacity-40 backdrop-blur-sm px-6 py-4`}
+        className={`absolute ${positionClasses[currentMedia.position]} text-white bg-opacity-40 backdrop-blur-sm px-6 py-4 bg-black/5`}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -30 }}
@@ -180,7 +182,7 @@ const FullScreenMedia: React.FC = () => {
         onClick={togglePause}
         onMouseEnter={handleCursorEnter}
         onMouseLeave={handleCursorLeave}
-        className="absolute left-50 bottom-50 bg-black bg-opacity-30 text-white p-3 rounded-full hover:bg-opacity-75 transition-all z-10 h-[6rem] w-[4rem]"
+        className="absolute left-3 bottom-3 bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-75 transition-all z-10 h-[2rem] w-[2rem] flex justify-center items-center text-[1rem]"
       >
         {isPaused ? "▶" : "⏸"}
       </button>

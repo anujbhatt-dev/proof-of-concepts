@@ -1,71 +1,53 @@
 "use client";
-import { categories, CategoryType } from "@/utils/category-seed";
-import { useGSAP } from "@gsap/react";
+// import { categories, CategoryType } from "@/utils/category-seed";
 import gsap from "gsap";
 import scrollTriger from "gsap/ScrollTrigger";
-import Image from "next/image";
+import Link from "next/link";
+// import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import AnimateHeading from "./AnimateHeading";
 
 // Define Enum for Category Types
 
 gsap.registerPlugin(scrollTriger);
 
 const Header = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
-  const [selectedBasecategory, setSelectedBasecategory] = useState<string | null>(null);
+  // const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  // const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+  // const [selectedBasecategory, setSelectedBasecategory] = useState<string | null>(null);
   const [categoryHover, setCategoryHover] = useState<string | null>(null);
-  const [subCategoryHover, setSubCategoryHover] = useState<string | null>(null);
+  // const [subCategoryHover, setSubCategoryHover] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false); // Track scroll state
-  const logoRef = useRef<HTMLDivElement | null>(null);
+  const logoRef = useRef<HTMLAnchorElement | null>(null);
 
-  // Filter categories based on type
-  const topCategories = categories.filter((cat) => cat.categoryType === CategoryType.TOP);
-  const subcategories = categories.filter(
-    (cat) => cat.categoryType === CategoryType.SUB && cat.parent === selectedCategory
-  );
-  const baseCategories = categories.filter(
-    (cat) => cat.categoryType === CategoryType.BASE && cat.parent === selectedSubcategory
-  );
+  // // Filter categories based on type
+  // const topCategories = categories.filter((cat) => cat.categoryType === CategoryType.TOP);
+  // const subcategories = categories.filter(
+  //   (cat) => cat.categoryType === CategoryType.SUB && cat.parent === selectedCategory
+  // );
+  // const baseCategories = categories.filter(
+  //   (cat) => cat.categoryType === CategoryType.BASE && cat.parent === selectedSubcategory
+  // );
 
-  const handleCategoryHover = (topCat: string) => {
-    if (topCat === selectedCategory) {
-      setCategoryHover(null);
-      setSelectedCategory(null);
-    }
-    setCategoryHover(topCat);
-    setSelectedCategory(topCat);
-  };
+  // const handleCategoryHover = (topCat: string) => {
+  //   if (topCat === selectedCategory) {
+  //     setCategoryHover(null);
+  //     setSelectedCategory(null);
+  //   }
+  //   setCategoryHover(topCat);
+  //   setSelectedCategory(topCat);
+  // };
 
-  const handleSubCategoryHover = (subCat: string) => {
-    setSelectedSubcategory(subCat);
-    setSubCategoryHover(subCat);
-  };
+  // const handleSubCategoryHover = (subCat: string) => {
+  //   setSelectedSubcategory(subCat);
+  //   setSubCategoryHover(subCat);
+  // };
 
-  const handleMouseLeave = () => {
-    setSelectedBasecategory(null);
-    setSelectedSubcategory(null);
-    setSelectedCategory(null);
-    setCategoryHover(null);
-  };
-
-  useGSAP(() => {
-    if (logoRef.current) {
-      const screenWidth = window.innerWidth; // Get total screen width
-      const logoWidth = logoRef.current.offsetWidth; // Get element width
-      const centerPosition = screenWidth / 2 - logoWidth / 2; // Center point
-
-      gsap.from(logoRef.current, {
-        x: centerPosition, // Start from center
-        y: 300,
-        scale: 5,
-        duration: 0.8,
-        delay: 1,
-        ease: "power3.out",
-      });
-    }
-  }, []);
+  // const handleMouseLeave = () => {
+  //   setSelectedBasecategory(null);
+  //   setSelectedSubcategory(null);
+  //   setSelectedCategory(null);
+  //   setCategoryHover(null);
+  // };
 
   // Detect scroll position
   useEffect(() => {
@@ -89,16 +71,16 @@ const Header = () => {
     <>
       <div className="h-[4rem] font-serif w-full md:px-[10rem]"></div>
       <div
-        className={`${
-          categoryHover ? "bg-black text-white" : isScrolled ? "bg-black text-white" : "text-zinc-100 bg-transparent"
-        } px-6 mx-auto border-b border-white/0 flex justify-between h-[4rem] fixed top-0 right-0 left-0 gap-x-4 z-20 transition-all duration-75 items-center`}
+        className={`
+          ${isScrolled ? "bg-black/50 text-white" : "text-zinc-100 bg-transparent"} backdrop-blur-md
+        px-6 mx-auto border-b border-white/0 flex justify-center h-[4rem] fixed top-0 right-0 left-0 gap-x-4 z-20 transition-all duration-75 items-center `}
       >
-        <div ref={logoRef} className="text-[2rem] ml-[1rem] font-semibold tracking-wider -mt-3">
+        <Link href={"/"} ref={logoRef} className="text-[2rem] ml-[1rem] font-semibold tracking-wider -mt-3 uppercase">
           Anaira
-        </div>
+        </Link>
         {/* <Image src={"/next.svg"} alt="" width={96} height={32} /> */}
 
-        <ul className="flex text-[0.9rem] h-full justify-start items-center flex-grow ">
+        {/* <ul className="flex text-[0.9rem] h-full justify-start items-center flex-grow ">
           {topCategories.map((item) => (
             <li
               onClick={() => handleCategoryHover(item.title)}
@@ -116,9 +98,9 @@ const Header = () => {
           <li className="cursor-pointer min-w-[7rem] flex justify-center items-center h-full border-b-2 hover:border-b-2 border-transparent hover:border-white transition-all duration-75 px-2 uppercase font-semibold">
             Lookbook
           </li>
-        </ul>
+        </ul> */}
       </div>
-      {categoryHover && (
+      {/* {categoryHover && (
         <div onClick={handleMouseLeave} className="animate-fromTop bg-black text-white shadow-lg fixed top-[4rem] w-full border-b border-black/30 z-20">
           <div className="min-h-[65vh] grid grid-cols-6 bg-black text-white">
             <aside className=" pt-12 border-r border-white/10">
@@ -222,7 +204,7 @@ const Header = () => {
             )}
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

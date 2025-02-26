@@ -1,0 +1,15 @@
+import FullScreenMedia from "@/components/FullScreenMedia";
+import HorizontalMarque from "@/components/HorizontalMarque";
+import NewArrivals from "@/components/NewArrivals";
+import PinnedCards from "@/components/PinnedCards";
+
+export default function HomePage() {
+  return (
+         <div className="relative -top-[4rem] -mb-[4rem]">
+            <FullScreenMedia/>
+            <NewArrivals/>
+            <PinnedCards/>
+            <HorizontalMarque/>
+         </div>
+  );
+}
